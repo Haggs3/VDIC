@@ -33,17 +33,18 @@ typedef enum bit[2:0] {
     RST_OP = 3'b010
 } operation_t;
 
-bit clk, rst_n, sin, sout; //TODO: logic
-bit[31:0] A, B, C, C_expected;
+bit clk, rst_n, sin;
+logic sout;
+bit[31:0] A, B, C;
 operation_t op_set;
 bit[7:0] ctl_byte;
 transmission_result_t transmission_result;
-bit[3:0] alu_flags, alu_flags_expected;
+bit[3:0] alu_flags;
 bit[3:0] crc4b;
-bit[2:0] crc3b, crc3b_expected;
+bit[2:0] crc3b;
 bit sim_data_error;
 bit[5:0] err_flags, err_flags_expected;
-bit parity, parity_expected;
+bit parity;
 
 string test_result = "PASSED";
     
@@ -353,10 +354,10 @@ endfunction
 
 task check_results;
     automatic bit failed = 0;
-    C_expected = 0;
-    alu_flags_expected = 0;
-    crc3b_expected = 0;
-    parity_expected = 0;
+    automatic bit C_expected = 0;
+    automatic bit alu_flags_expected = 0;
+    automatic bit crc3b_expected = 0;
+    automatic bit parity_expected = 0;
     
     if (transmission_result == TRANSMISSION_CORRECT) begin
         C_expected = get_expected_result(B, A, op_set);
