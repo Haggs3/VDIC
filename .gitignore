@@ -1,0 +1,8 @@
+lab0/
+**/*.swp
+**/*.log
+**/*.simvision
+**/*.diag
+*example*
+xcelium.d/
+xrun.history
