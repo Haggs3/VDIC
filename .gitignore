@@ -1,8 +1,12 @@
 lab0/
-**/*.swp
-**/*.log
-**/*.simvision
-**/*.diag
+*.swp
+*.log
+*.simvision
+*.diag
 *example*
 xcelium.d/
 xrun.history
+INCA_libs
+cov_work
+xrun*
+!xrun_covfile.txt
